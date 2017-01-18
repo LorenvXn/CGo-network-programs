@@ -1,0 +1,5 @@
+CC=/usr/local/musl/bin/musl-gcc go build --ldflags '-linkmode external -extldflags "-static"' eth1.go
+
+file eth1
+
+./eth1
