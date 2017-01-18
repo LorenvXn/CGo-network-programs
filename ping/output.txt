@@ -1,0 +1,8 @@
+~# ./eth1
+fd:  3
+Interface hw address:  08:00:27:63:52:e8
+MTU hw interface:  1500
+Pinging...
+PING localhost (127.0.0.1) 56(84) bytes of data.
+64 bytes from localhost (127.0.0.1): icmp_seq=1 ttl=64 time=0.026 ms
+64 bytes from localhost (127.0.0.1): icmp_seq=2 ttl=64 time=0.066 ms
