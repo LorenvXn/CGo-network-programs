@@ -1,3 +1,12 @@
+package main
+
+import (
+    "fmt"
+    "net"
+    "syscall"
+)
+
+/*
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -8,6 +17,7 @@
 
 */
 import "C"
+
 
 func main() {
 
