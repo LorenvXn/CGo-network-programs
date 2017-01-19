@@ -21,13 +21,13 @@ import "C"
 
 func main() {
 
-    fd, err := syscall.Socket(syscall.AF_PACKET, syscall.SOCK_RAW, syscall.ETH_P_ALL)
+    ps, err := syscall.Socket(syscall.AF_PACKET, syscall.SOCK_RAW, syscall.ETH_P_ALL)
     if err != nil {
         fmt.Println("Error: " + err.Error())
         return
     }
-    fmt.Println("Obtained fd ", fd)
-    defer syscall.Close(fd)
+    fmt.Println("Obtained fd ", ps)
+    defer syscall.Close(ps)
 
     interf, err := net.InterfaceByName("eth0")
     if err != nil {
