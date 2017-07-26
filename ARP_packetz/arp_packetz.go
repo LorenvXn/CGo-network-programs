@@ -69,7 +69,7 @@ char* ARPPacketFormat(char* SourceMacAddress, char* SourceAddressIp)
     SourceMacAddress += 3;
     packet->eth.SourceAddress[5] = strtoul(SourceMacAddress, (void *)0, 16);
 
-    packet->eth.Type = htons(0x8060); // ARP type
+    packet->eth.Type = htons(0x0806); // ARP type
 
     packet->arp.HardwareType = htons(0x0001); // Ethernet
     packet->arp.ProtocolType = htons(0x0800); //IP;
@@ -124,7 +124,7 @@ func main() {
 
     packet := C.GoBytes(unsafe.Pointer(C.ARPPacketFormat(Iface_String, IP_String)) , C.int(ARP_packet_size))
 
-    var address syscall.SockaddrLinklayer
+    var address syscall.SockaddrLinklayerlType = htons(0x0800); //IP;
     address.Protocol = syscall.ETH_P_ARP
     address.Ifindex = Iface.Index
     address.Hatype = syscall.ARPHRD_ETHER
