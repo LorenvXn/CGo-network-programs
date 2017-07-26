@@ -1,0 +1,53 @@
+
+Compile it: 
+
+go build yoy.go 
+(yes, I named it yoy.go)
+
+root@tron:~/gogo# ./yoy
+Size of the newly created ARP packet:  42
+Value of File Descriptor [... if negative, is no use... ]: 3
+Hardware Address:  08:00:27:e4:a6:ff
+2017/07/26 14:39:15 packet has been sent! 
+
+
+From a different terminal:
+
+root@tron:~# tcpdump -vv arp
+tcpdump: listening on enp0s3, link-type EN10MB (Ethernet), capture size 262144 bytes
+
+
+14:39:22.483059 ARP, Ethernet (len 6), IPv4 (len 4), Request who-has 10.0.2.2 tell 10.0.2.15, length 28
+14:39:22.483382 ARP, Ethernet (len 6), IPv4 (len 4), Reply 10.0.2.2 is-at 52:54:00:12:35:02 (oui Unknown), length 46
+
+
+----------------------------------------------
+
+root@tron:~/gogo# ./yoy
+Size of the newly created ARP packet:  42
+Value of File Descriptor [... if negative, is no use... ]: 3
+Hardware Address:  08:00:27:e4:a6:ff
+2017/07/26 14:44:31 packet has been sent! 
+root@tron:~/gogo# 
+
+
+[From a differnt terminal]
+
+root@tron:~# tcpdump -s  0
+tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+listening on enp0s3, link-type EN10MB (Ethernet), capture size 262144 bytes
+
+14:44:22.836495 IP 10.0.2.15.36128 > prg02s12-in-f2.1e100.net.https: Flags [.], ack 4879, win 42600, length 0
+14:44:31.246675 ARP, Reply 10.0.2.15 is-at 08:00:27:e4:a6:ff (oui Unknown), length 28
+14:44:39.187952 IP 10.0.2.15.36128 > prg02s12-in-f2.1e100.net.https: Flags [P.], seq 3159:3297, ack 4879, win 42600, length 138
+
+================================
+
+Stuff on my machine
+
+root@tron:~/gogo# arp -n
+Address                  HWtype  HWaddress           Flags Mask            Iface
+10.0.2.2                 ether   52:54:00:12:35:02   C                     enp0s3
+root@tron:~/gogo# 
+
+
