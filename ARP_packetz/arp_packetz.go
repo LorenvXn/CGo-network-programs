@@ -138,10 +138,10 @@ func main() {
 
 }
 
-// Eth Type 0x8060 not recognizable - 0x0806 works like a charm: 
-// https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/src/sys/net/ethertypes.h
-// (output from tcpdump below)
-//14:41:07.824615 IP 10.80.130.254.domain > 10.0.2.15.33394: 40515 NXDomain 0/1/0 (121)
-//14:41:08.907918 08:00:27:e4:a6:ff (oui Unknown) > ff:ff:ff:ff:ff:00 (oui Unknown), ethertype Unknown (0x8060), length 42: 
+// Eth Type 0x8060 not recognizable (http://www.cs.virginia.edu/~cs458/slides/module06-arpV2.pdf) - 0x0806 works like a charm: 
+// Good stuff here: https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/src/sys/net/ethertypes.h
+// (bad output from tcpdump below, with 0x8060)
+// 14:41:07.824615 IP 10.80.130.254.domain > 10.0.2.15.33394: 40515 NXDomain 0/1/0 (121)
+// 14:41:08.907918 08:00:27:e4:a6:ff (oui Unknown) > ff:ff:ff:ff:ff:00 (oui Unknown), ethertype Unknown (0x8060), length 42: 
 //	0x0000:  0001 0800 0604 0002 0800 27e4 a6ff 0a00  ..........'.....
 //	0x0010:  020f 0800 27e4 a6ff 0a00 020f            ....'.......
